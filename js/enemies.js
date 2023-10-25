@@ -14,7 +14,10 @@ class Enemies {
     this.width = 150;
     this.height = 90;
     this.x = 0;
-    this.y = Math.random() * 720;
+    this.y =
+      Math.random() > 0.5
+        ? 350 + Math.random() * 370
+        : 350 - Math.random() * 370;
     this.speed = 0.66;
 
     // DOM adjustments

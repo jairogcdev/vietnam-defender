@@ -21,6 +21,15 @@ class Game {
 
     // game over
     this.gameOn = true;
+
+    // audio
+    this.audio = new Audio();
+
+    // // music
+    // this.music = false;
+
+    // // effects
+    this.effects = false;
   }
   getFPS = () =>
     new Promise((resolve) =>
@@ -44,9 +53,22 @@ class Game {
       }
     });
   };
-  cannonBallSpawn = () => {
-    let cannonBall = new CannonBall(this.tank.x, this.tank.y);
+  cannonSound = () => {
+    this.effects = effectsNode.classList.contains("active") ? true : false;
+    console.log(this.effects);
+
+    if (this.effects) {
+      this.audio.src = "../audio/bang.mp3";
+      this.audio.volume = 0.5;
+      this.audio.play().then(() => {
+        return true;
+      });
+    }
+  };
+  cannonBallSpawn = (x, y) => {
+    let cannonBall = new CannonBall(x, y);
     this.cannonBallArr.push(cannonBall);
+    this.cannonSound();
   };
   collisionCheckCannonBallEnemies = () => {
     this.enemiesArr.forEach((eachEnemy, indexEnemy) => {
@@ -61,12 +83,15 @@ class Game {
           eachEnemy.y + eachCannonBall.height >
             eachCannonBall.cannonBallY - eachEnemy.height / 2
         ) {
+          eachEnemy.node.src = "../images/explosion.png";
           this.score += 1;
           scoreH1Node.innerText = `Score: ${this.score}`;
-          this.increaseDificulty();
-          this.enemiesArr[indexEnemy].node.remove();
+          eachCannonBall.node.remove();
           delete this.enemiesArr[indexEnemy];
-          this.cannonBallArr[indexBall].node.remove();
+          this.increaseDificulty();
+          setTimeout(() => {
+            eachEnemy.node.remove();
+          }, 400);
         }
       });
     });
@@ -99,18 +124,23 @@ class Game {
     }
   };
   gameOver = () => {
-    console.log("GAME OVER");
     this.gameOn = false;
-    this.score = 0;
     this.enemyCount = 1;
     this.tank.tankSpeed = 1;
     this.enemiesArr.forEach((eachEnemy) => {
       eachEnemy.speed = 0.66;
     });
+    scoreOverH1Node.innerText = `Score: ${this.score}`;
+    this.score = 0;
     scoreH1Node.innerText = `Score: ${this.score}`;
+
     this.enemiesArr.forEach((eachEnemy, index) => {
       eachEnemy.node.remove();
       delete this.enemiesArr[index];
+    });
+    this.cannonBallArr.forEach((eachCannonBall, index) => {
+      eachCannonBall.node.remove();
+      delete this.cannonBallArr[index];
     });
   };
   // Start gameLoop
@@ -121,10 +151,8 @@ class Game {
     this.timer++;
     if (this.gameOn === true) requestAnimationFrame(this.gameLoop);
     if (gameObject.gameOn === false) {
-      if (confirm("Fin de la partida! Quieres volver a jugar")) {
-        this.gameOn = true;
-        requestAnimationFrame(this.gameLoop);
-      }
+      gameOverNode.style.display = "flex";
+      gameScreenNode.style.display = "none";
     }
   };
 }

@@ -10,6 +10,8 @@ class Tank {
     this.x = 900;
     this.y = 350;
     this.tankSpeed = 1;
+    this.isMovingUp = false;
+    this.isMovingDown = false;
 
     // DOM adjustments
     this.node.style.width = `${this.width}px`;
@@ -20,6 +22,10 @@ class Tank {
   }
   // Tank movement
   moveUp = () => {
+    // 2 eventos >
+    //keydown Cambia down a true y up a false
+    // keyup Cambia upa true y down a false
+    // ejecutar movimiento en el gameloop cuando los bool sean true
     if (this.y >= -10) {
       this.y -= 10 * this.tankSpeed;
       if (this.y >= -10) this.node.style.top = `${this.y}px`;

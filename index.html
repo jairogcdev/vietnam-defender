@@ -4,29 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vietnam Defender</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- SPLASH SCREEN -->
     <div id="splash-screen" class="container">
-      <img src="./images/logo.png" width="600" alt="logo" />
-      <button id="start-btn">Start!</button>
+      <img src="images/logo.png" class="logo" alt="logo" />
+      <button id="start-btn" class="key">Start!</button>
+      <div class="keyboard">
+        <div class="row">
+          <button class="key">↑</button>
+        </div>
+        <div class="row">
+          <button class="key unused">←</button>
+          <button class="key">↓</button>
+          <button class="key unused">→</button>
+        </div>
+        <div class="row">
+          <button class="spacebar">Spacebar</button>
+        </div>
+        <div class="sounds">
+          <button class="music-btn">
+            <img src="images/music.png" class="music" />
+          </button>
+          <button class="effects-btn">
+            <img src="images/effects.png" class="effects" />
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- GAME SCREEN -->
 
     <div id="game-screen" class="container">
       <div id="game-box"></div>
+      <div id="game-info">
+        <!-- Score -->
+        <div id="game-score">
+          <h1>Score: 0</h1>
+        </div>
+        <div id="game-lives">
+          <h1>Lives: 3</h1>
+          <img src="images/tank.png" />
+          <img src="images/tank.png" />
+          <img src="images/tank.png" />
+        </div>
+        <div id="game-bonus">
+          <h1>Lives: 3</h1>
+          <img src="images/tank.png" />
+          <img src="images/tank.png" />
+          <img src="images/tank.png" />
+        </div>
+      </div>
     </div>
 
     <!-- GAME OVER SCREEN -->
-    <div id="game-over-screen" class="container">
-      <img src="" />
-    </div>
-
-    <!-- Score -->
-    <div id="game-score" class="container">
-      <h1>Score: 0</h1>
+    <div id="gameover-screen">
+      <div class="gameover-menu">
+        <img src="images/gameover.jpg" />
+        <h1 class="endGame">Game Over!</h1>
+        <h1 class="score-end">Score: 0</h1>
+        <button id="restart-btn">Restart</button>
+        <button id="exit-btn">Exit</button>
+      </div>
     </div>
 
     <script src="js/main.js"></script>

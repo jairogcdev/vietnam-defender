@@ -19,10 +19,10 @@ class CannonBall {
     // actualizar la posición en el DOM
     this.cannonBallX -= (this.cannonBallSpeed * 1000) / fps;
     this.node.style.left = `${this.cannonBallX}px`;
-    // if (this.cannonBallX <= -30) {
-    //   this.cannonBallX -= this.cannonBallSpeed * 100;
-    //   this.cannonBallX = 900;
-    //   this.node.style.left = `${this.cannonBallX}px`;
-    // }
+    if (this.cannonBallX <= -30) {
+      this.cannonBallX -= (this.cannonBallSpeed * 1000) / fps;
+      this.cannonBallX = 900;
+      this.node.style.left = `${this.cannonBallX}px`;
+    }
   };
 }
