@@ -1,7 +1,7 @@
 class Enemies {
   constructor() {
     this.node = document.createElement("img");
-    this.node.src = "../images/enemy-tank.png";
+    this.node.src = "images/enemy-tank.png";
     gameBoxNode.append(this.node);
     this.enemyCount = 0;
     this.enemySpeed = 100;

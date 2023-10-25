@@ -1,7 +1,7 @@
 class Tank {
   constructor() {
     this.node = document.createElement("img");
-    this.node.src = "../images/tank.png";
+    this.node.src = "images/tank.png";
     gameBoxNode.append(this.node);
 
     // Tank dimensions

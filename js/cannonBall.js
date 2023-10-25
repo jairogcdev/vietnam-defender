@@ -1,7 +1,7 @@
 class CannonBall {
   constructor(positionX, positionY) {
     this.node = document.createElement("img");
-    this.node.src = "../images/ammo.png";
+    this.node.src = "images/ammo.png";
     gameBoxNode.append(this.node);
 
     this.cannonBallX = positionX - 30;

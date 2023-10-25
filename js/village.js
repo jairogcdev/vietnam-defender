@@ -1,7 +1,7 @@
 class Village {
   constructor() {
     this.node = document.createElement("img");
-    this.node.src = "../images/flag.png";
+    this.node.src = "images/flag.png";
     gameBoxNode.append(this.node);
 
     this.width = 150;
