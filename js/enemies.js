@@ -5,19 +5,18 @@ class Enemies {
     gameBoxNode.append(this.node);
     this.enemyCount = 0;
     this.enemySpeed = 100;
-    this.enemySpeedMax = 100;
-    this.enemySpeedMin = 100;
-    this.enemySpeedInc = 100;
-    this.enemySpeedDec = 100;
 
     // enemies dimensions
     this.width = 150;
     this.height = 90;
-    this.x = 0;
+    this.x =
+      Math.random() > 0.5
+        ? -100 + Math.random() * 100
+        : -300 - Math.random() * 300;
     this.y =
       Math.random() > 0.5
-        ? 350 + Math.random() * 370
-        : 350 - Math.random() * 370;
+        ? 322 + Math.random() * 338
+        : 322 - Math.random() * 322;
     this.speed = 0.66;
 
     // DOM adjustments
@@ -29,6 +28,10 @@ class Enemies {
   }
   automaticMovement = () => {
     this.x += this.speed;
+    this.node.style.left = `${this.x}px`;
+  };
+  enemyStop = (x) => {
+    this.x = x;
     this.node.style.left = `${this.x}px`;
   };
   addEnemy(enemy) {

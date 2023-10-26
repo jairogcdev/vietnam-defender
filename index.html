@@ -42,28 +42,32 @@
         <!-- Score -->
         <div id="game-score">
           <h1>Score: 0</h1>
+          <h3>HighScore: 0</h3>
         </div>
         <div id="game-lives">
           <h1>Lives: 3</h1>
-          <img src="images/tank.png" />
-          <img src="images/tank.png" />
-          <img src="images/tank.png" />
+          <div class="lives">
+            <img src="images/tank.png" />
+            <img src="images/tank.png" />
+            <img src="images/tank.png" />
+          </div>
         </div>
         <div id="game-bonus">
-          <h1>Lives: 3</h1>
-          <img src="images/tank.png" />
-          <img src="images/tank.png" />
-          <img src="images/tank.png" />
+          <h1>Mines: 3</h1>
+          <div class="explosives">
+            <img src="images/mine.png" />
+            <img src="images/mine.png" />
+            <img src="images/mine.png" />
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GAME OVER SCREEN -->
-    <div id="gameover-screen">
-      <div class="gameover-menu">
-        <img src="images/gameover.jpg" />
-        <h1 class="endGame">Game Over!</h1>
-        <h1 class="score-end">Score: 0</h1>
+    <div id="gameover-screen" class="container">
+      <h1 class="endGame">Game Over!</h1>
+      <h1 class="score-end">Score: 0</h1>
+      <div class="score-end-buttons">
         <button id="restart-btn">Restart</button>
         <button id="exit-btn">Exit</button>
       </div>

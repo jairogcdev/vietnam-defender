@@ -8,6 +8,8 @@ body {
   background-attachment: fixed;
   position: relative;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #splash-screen {
@@ -16,8 +18,7 @@ body {
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
-  background-color: lightgrey;
-  opacity: 0.8;
+  background-color: #d3d3d380;
   position: absolute;
   justify-content: center;
   padding: 50px;
@@ -31,20 +32,10 @@ body {
   position: relative;
 }
 
-#start-btn {
-  background-color: rgb(34, 210, 52);
-  color: white;
-  padding: 20px;
-  font-size: 20px;
-  margin-top: 40px;
-  border-radius: 5px;
-}
-
 #game-box {
   background-color: darkgray;
   width: 1200px;
-  height: 800px;
-  margin-top: 25px;
+  height: 750px;
   overflow: hidden;
   position: relative;
   user-select: none;
@@ -57,6 +48,9 @@ body {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+#game-box img {
+  object-fit: cover;
+}
 .logo {
   border: 2px solid #3498db;
   border-radius: 10px;
@@ -65,60 +59,71 @@ body {
 
 #game-info {
   display: none;
-  background-color: rgb(181, 199, 75);
-  width: 1200px;
-  height: 105px;
+  background-color: rgb(235, 171, 9);
+  width: 200px;
+  height: 750px;
   border: 2px solid #3498db;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
   justify-content: space-evenly;
+  opacity: 0.8;
 }
 
 #game-screen {
   display: none;
+  flex-direction: row;
 }
 
 #game-score {
   display: flex;
-  /* position: absolute; */
-  height: 105px;
-
   align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
-#game-score h1 {
-}
+
 /* img {
   background-color: blueviolet;
 } */
-
 #game-lives {
-  display: flex;
-  /* position: absolute; */
-  height: 105px;
-
-  align-items: center;
+  text-align: center;
 }
+
+#game-lives .lives {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 #game-lives img {
-  width: 50px;
+  display: flex;
+  width: 80px;
+  align-items: center;
+  padding: 5px;
 }
 
 #game-bonus {
-  display: flex;
-  /* position: absolute; */
-  height: 105px;
+  text-align: center;
+}
 
+#game-bonus .explosives {
+  display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 #game-bonus img {
+  display: flex;
   width: 50px;
+  align-items: center;
+  padding: 5px;
 }
 
 #gameover-screen {
   display: none;
+  background-image: url("../images/gameover.jpg");
   width: 1200px;
   height: 800px;
-  margin-top: 25px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,21 +131,9 @@ body {
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-}
-
-#gameover-screen img {
-  width: 1200px;
-  height: 800px;
-}
-
-.gameover-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
 }
 
 .endGame {
@@ -149,11 +142,10 @@ body {
   width: 50%;
   color: rgb(176, 230, 61);
   justify-content: center;
-  position: absolute;
+
   padding: 50px 25px;
   border: 2px solid orange;
-  background-color: rgb(255, 0, 0);
-  opacity: 0.5;
+  background-color: rgb(172, 20, 20, 50%);
   border-radius: 5px;
   top: 20%;
   left: 0;
@@ -166,41 +158,35 @@ body {
   width: 50%;
   color: rgb(176, 230, 61);
   justify-content: center;
-  position: absolute;
   padding: 25px;
   border: 2px solid orange;
-  background-color: rgb(172, 20, 20);
-  opacity: 0.5;
+  background-color: rgb(172, 20, 20, 50%);
   border-radius: 5px;
   left: 0;
   right: 0;
 }
 
 #restart-btn {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
   background-color: rgb(34, 210, 52);
-  color: white;
-  padding: 20px;
-  font-size: 20px;
-  margin-top: 200px;
-  border-radius: 5px;
-  right: 50%;
+  padding: 25px;
 }
 
 #exit-btn {
-  position: absolute;
-  display: block;
-  align-items: center;
   background-color: red;
+  padding: 25px;
+}
+
+.score-end-buttons {
+  display: flex;
   color: white;
-  padding: 20px;
   font-size: 20px;
-  margin-top: 200px;
-  border-radius: 5px;
-  left: 50%;
+  border: 2px solid orange;
+  margin: 0 auto;
+  width: 50%;
+  justify-content: space-evenly;
+  padding: 25px;
+
+  background-color: rgba(211, 211, 211, 0.478);
 }
 
 #start-btn {
@@ -209,8 +195,12 @@ body {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   width: 10%;
   margin: 0 auto;
-  margin: 50px 0;
-  padding: 50px 300px;
+  margin: 20px 0;
+  padding: 50px 80px;
+  background-color: rgb(34, 210, 52);
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
 }
 
 .keyboard {
@@ -221,8 +211,7 @@ body {
   border: 2px solid #3498db;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   width: 10%;
-  margin: 50px 0;
-  padding: 50px 236px;
+  padding: 2px 236px;
   border-radius: 5px;
 }
 

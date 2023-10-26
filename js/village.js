@@ -5,7 +5,7 @@ class Village {
     gameBoxNode.append(this.node);
 
     this.width = 150;
-    this.height = 800;
+    this.height = 750;
     this.x = 1050;
     this.y = 0;
 

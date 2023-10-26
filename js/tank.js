@@ -8,7 +8,7 @@ class Tank {
     this.width = 150;
     this.height = 90;
     this.x = 900;
-    this.y = 350;
+    this.y = 332;
     this.tankSpeed = 1;
     this.isMovingUp = false;
     this.isMovingDown = false;
@@ -21,20 +21,16 @@ class Tank {
     this.node.style.top = `${this.y}px`;
   }
   // Tank movement
-  moveUp = () => {
-    // 2 eventos >
-    //keydown Cambia down a true y up a false
-    // keyup Cambia upa true y down a false
-    // ejecutar movimiento en el gameloop cuando los bool sean true
-    if (this.y >= -10) {
-      this.y -= 10 * this.tankSpeed;
-      if (this.y >= -10) this.node.style.top = `${this.y}px`;
+  moveUp = (fps) => {
+    if (this.y >= 0) {
+      this.y -= (this.tankSpeed * fps) / fps;
+      if (this.y >= 0) this.node.style.top = `${this.y}px`;
     }
   };
-  moveDown = () => {
-    if (this.y <= 710) {
-      this.y += 10 * this.tankSpeed;
-      if (this.y <= 710) this.node.style.top = `${this.y}px`;
+  moveDown = (fps) => {
+    if (this.y <= 662) {
+      this.y += (this.tankSpeed * fps) / fps;
+      if (this.y <= 662) this.node.style.top = `${this.y}px`;
     }
   };
   getTankPosition = () => {
