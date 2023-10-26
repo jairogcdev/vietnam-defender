@@ -49,7 +49,7 @@ const startGame = () => {
   scoreNode.style.display = "flex";
   // Create a new game object
   gameObject = new Game();
-  playMusic("../audio/audiogame.mp3", true, music);
+  playMusic("audio/audiogame.mp3", true, music);
   // Call gameLoop
   gameObject.gameLoop();
 };
@@ -71,7 +71,7 @@ document.addEventListener("keydown", (e) => {
     gameObject.effects = effectsNode.classList.contains("active")
       ? true
       : false;
-    playMusic("../audio/beep.mp3", false, gameObject.effects);
+    playMusic("audio/beep.mp3", false, gameObject.effects);
   }
 });
 document.addEventListener("keyup", (e) => {

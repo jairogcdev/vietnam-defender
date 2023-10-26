@@ -58,10 +58,10 @@ class Game {
       if (enemy.x > this.tank.x + this.tank.width) {
         if (this.explosives > 0 && this.useExplosives === true) {
           delete this.enemiesArr[index];
-          enemy.node.src = "../images/rocket-explosion.png";
+          enemy.node.src = "images/rocket-explosion.png";
           enemy.node.style.objectFit = "contain";
           if (this.effects) {
-            this.audio.src = "../audio/explosion.mp3";
+            this.audio.src = "audio/explosion.mp3";
             this.audio.volume = 0.1;
             this.audio.play().then(() => {
               return true;
@@ -98,7 +98,7 @@ class Game {
     this.effects = effectsNode.classList.contains("active") ? true : false;
 
     if (this.effects) {
-      this.audio.src = "../audio/bang.mp3";
+      this.audio.src = "audio/bang.mp3";
       this.audio.volume = 0.1;
       this.audio.play().then(() => {
         return true;
@@ -123,7 +123,7 @@ class Game {
           eachEnemy.y + eachCannonBall.height >
             eachCannonBall.cannonBallY - eachEnemy.height / 2
         ) {
-          eachEnemy.node.src = "../images/explosion.png";
+          eachEnemy.node.src = "images/explosion.png";
           eachEnemy.node.style.objectFit = "contain";
           this.score += 1;
           scoreH1Node.innerText = `Score: ${this.score}`;
@@ -133,7 +133,7 @@ class Game {
           setTimeout(() => {
             eachEnemy.node.remove();
             if (this.effects) {
-              this.audio.src = "../audio/explosion.mp3";
+              this.audio.src = "audio/explosion.mp3";
               this.audio.volume = 0.1;
               this.audio.play().then(() => {
                 return true;
