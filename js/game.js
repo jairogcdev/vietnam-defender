@@ -62,7 +62,7 @@ class Game {
           enemy.node.style.objectFit = "contain";
           if (this.effects) {
             this.audio.src = "audio/explosion.mp3";
-            this.audio.volume = 0.1;
+            this.audio.volume = 0.05;
             this.audio.play().then(() => {
               return true;
             });
@@ -99,7 +99,7 @@ class Game {
 
     if (this.effects) {
       this.audio.src = "audio/bang.mp3";
-      this.audio.volume = 0.1;
+      this.audio.volume = 0.05;
       this.audio.play().then(() => {
         return true;
       });
@@ -134,7 +134,7 @@ class Game {
             eachEnemy.node.remove();
             if (this.effects) {
               this.audio.src = "audio/explosion.mp3";
-              this.audio.volume = 0.1;
+              this.audio.volume = 0.05;
               this.audio.play().then(() => {
                 return true;
               });
@@ -173,10 +173,15 @@ class Game {
   };
   gameOver = () => {
     this.gameOn = false;
+    musicNode.classList.toggle("active");
+    music = false;
+    effects = false;
     this.enemyCount = 1;
     this.tank.tankSpeed = 1;
     this.lives = 3;
     this.explosives = 3;
+    this.moveUp = false;
+    this.moveDown = false;
     this.tank.node.style.top = `${this.tank.y}px`;
     livesH1Node.innerText = `Lives: ${this.lives}`;
     bonusH1Node.innerText = `Mines: ${this.explosives}`;
@@ -213,7 +218,13 @@ class Game {
     } else if (this.moveDown === true) {
       this.getFPS().then((fps) => this.tank.moveDown(fps));
     }
-
+    if (music === false) {
+      inGameMusicNode.style.display = "none";
+    }
+    console.log(effects);
+    if (effects === false) {
+      inGameEffectsNode.style.display = "none";
+    }
     scoreOverH3Node.innerText = this.highScore
       ? `HighScore: ` + localStorage.getItem("highScore")
       : `HighScore: ` + 0;
@@ -228,3 +239,10 @@ class Game {
     }
   };
 }
+inGameEffectsNode.addEventListener("click", () => {
+  inGameEffectsNode.classList.toggle("active");
+  gameObject.audio.muted = gameObject.audio.muted ? false : true;
+  inGameEffectsImgNode.src = gameObject.audio.muted
+    ? "images/effects-mute.png"
+    : "images/effects.png";
+});

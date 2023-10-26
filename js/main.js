@@ -21,9 +21,15 @@ let livesH1Node = livesNode.querySelector("h1");
 let bonusNode = document.querySelector("#game-bonus");
 let bonusImgNode = document.querySelectorAll("#game-bonus img");
 let bonusH1Node = bonusNode.querySelector("h1");
+let inGameSoundsNode = document.querySelector("#soundsInGame");
+let inGameMusicNode = inGameSoundsNode.querySelector(".music-btn");
+let inGameEffectsNode = inGameSoundsNode.querySelector(".effects-btn");
+let inGameEffectsImgNode = inGameSoundsNode.querySelector(".effects-mute");
+let inGameMusicImgNode = inGameSoundsNode.querySelector(".music-mute");
 let gameObject;
 let music = false;
 let effects = false;
+let audio = new Audio();
 
 // Variables globales
 
@@ -31,7 +37,6 @@ let effects = false;
 
 // Recursion
 const playMusic = (pathMusic, loop, sound) => {
-  let audio = new Audio();
   if (sound) {
     audio.src = pathMusic;
     audio.volume = 0.05;
@@ -109,4 +114,11 @@ exitNode.addEventListener("click", () => {
   gameOverNode.style.display = "none";
   splashScreenNode.style.display = "flex";
   gameObject.tank.node.remove();
+});
+
+inGameMusicNode.addEventListener("click", () => {
+  audio.muted = audio.muted ? false : true;
+  inGameMusicImgNode.src = audio.muted
+    ? "images/music-mute.png"
+    : "images/music.png";
 });
