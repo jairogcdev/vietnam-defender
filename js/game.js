@@ -197,9 +197,9 @@ class Game {
     this.lives = 3;
     this.explosives = 3;
     music = musicNode.classList.contains("active") ? true : false;
+    this.effects = effectsNode.classList.contains("active") ? true : false;
   };
   startingItemsValueStyles = () => {
-    musicNode.classList.toggle("active");
     livesH1Node.innerText = `Lives: ${this.lives}`;
     bonusH1Node.innerText = `Mines: ${this.explosives}`;
     livesImgNode.forEach((eachImg) => (eachImg.style.display = "flex"));
@@ -261,12 +261,8 @@ class Game {
     }
   };
   checkSoundButtons = () => {
-    if (music === false) {
-      inGameMusicNode.style.display = "none";
-    }
-    if (effects === false) {
-      inGameEffectsNode.style.display = "none";
-    }
+    inGameMusicNode.style.display = music === false ? "none" : "flex";
+    inGameEffectsNode.style.display = effects === false ? "none" : "flex";
   };
   gameStatus = (gameOn) => {
     if (gameOn === true) requestAnimationFrame(this.gameLoop);
