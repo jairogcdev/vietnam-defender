@@ -63,6 +63,7 @@ class Game {
       enemy.automaticMovement();
       if (enemy.x > this.village.x) {
         if (this.explosives > 0 && this.useExplosives === true) {
+          let mine = new Mine(enemy.y + enemy.height);
           delete this.enemiesArr[index];
           enemy.node.src = "images/rocket-explosion.png";
           enemy.node.style.objectFit = "contain";
@@ -74,8 +75,11 @@ class Game {
             });
           }
           setTimeout(() => {
+            mine.node.remove();
+          }, 1000);
+          setTimeout(() => {
             enemy.node.remove();
-          }, 3000);
+          }, 2000);
           this.useExplosives = false;
           this.score += 1;
           scoreH1Node.innerText = `Score: ${this.score}`;
