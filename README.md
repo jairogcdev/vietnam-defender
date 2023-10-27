@@ -38,9 +38,9 @@ Vietnam defender is a classic game of kill enemies in waves, by killing enemies 
 
 # States
 
-- [Main Screen!](https://github.com/jairogcdev/vietnam-defender/tree/main/images/screens/main-screen.png)
-- [Gane Screen!](https://github.com/jairogcdev/vietnam-defender/images/screens/game-screen.png)
-- [GaneOver Screen!](https://github.com/jairogcdev/vietnam-defender/images/screens/gameover-screen.png)
+- [Main Screen!](https://jairogcdev.github.io/vietnam-defender/images/screens/main-screen.png)
+- [Gane Screen!](https://jairogcdev.github.io/vietnam-defender/imagess/screens/game-screen.png)
+- [GaneOver Screen!](https://jairogcdev.github.io/vietnam-defender/images/screens/gameover-screen.png)
 
 # Proyect Structure
 
