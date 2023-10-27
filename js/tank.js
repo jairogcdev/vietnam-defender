@@ -24,13 +24,29 @@ class Tank {
   moveUp = (fps) => {
     if (this.y >= 0) {
       this.y -= (this.tankSpeed * fps) / fps;
+      //   this.node.style.rotate = `90deg`;
       if (this.y >= 0) this.node.style.top = `${this.y}px`;
     }
   };
   moveDown = (fps) => {
     if (this.y <= 662) {
       this.y += (this.tankSpeed * fps) / fps;
+      //   this.node.style.rotate = `270deg`;
       if (this.y <= 662) this.node.style.top = `${this.y}px`;
+    }
+  };
+  moveLeft = (fps) => {
+    if (this.x >= 0) {
+      this.x -= (this.tankSpeed * fps) / fps;
+      //   this.node.style.rotate = `0deg`;
+      if (this.x >= 0) this.node.style.left = `${this.x}px`;
+    }
+  };
+  moveRight = (fps) => {
+    if (this.x <= 900) {
+      this.x += (this.tankSpeed * fps) / fps;
+      //   this.node.style.rotate = `0deg`;
+      if (this.x <= 900) this.node.style.left = `${this.x}px`;
     }
   };
   getTankPosition = () => {

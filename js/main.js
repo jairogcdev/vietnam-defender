@@ -26,16 +26,13 @@ let inGameMusicNode = inGameSoundsNode.querySelector(".music-btn");
 let inGameEffectsNode = inGameSoundsNode.querySelector(".effects-btn");
 let inGameEffectsImgNode = inGameSoundsNode.querySelector(".effects-mute");
 let inGameMusicImgNode = inGameSoundsNode.querySelector(".music-mute");
+
+// Variables
 let gameObject;
 let music = false;
 let effects = false;
 let audio = new Audio();
 
-// Variables globales
-
-// Funciones
-
-// Recursion
 const playMusic = (pathMusic, loop, sound) => {
   if (sound) {
     audio.src = pathMusic;
@@ -66,9 +63,14 @@ document.addEventListener("keydown", (e) => {
     if (gameObject.gameOn === true) gameObject.moveUp = true;
   } else if (e.code === "ArrowDown" || e.code === "KeyS") {
     if (gameObject.gameOn === true) gameObject.moveDown = true;
+  } else if (e.code === "ArrowLeft" || e.code === "KeyA") {
+    if (gameObject.gameOn === true) gameObject.moveLeft = true;
+  } else if (e.code === "ArrowRight" || e.code === "KeyD") {
+    if (gameObject.gameOn === true) gameObject.moveRight = true;
   } else if (e.code === "Space") {
     if (gameObject.gameOn === true) {
       e.preventDefault();
+      // gameObject.tank.node.style.rotate = `0deg`;
       gameObject.cannonBallSpawn(gameObject.tank.x, gameObject.tank.y);
     }
   } else if (e.code === "KeyQ") {
@@ -76,7 +78,7 @@ document.addEventListener("keydown", (e) => {
     gameObject.effects = effectsNode.classList.contains("active")
       ? true
       : false;
-    playMusic("audio/beep.mp3", false, gameObject.effects);
+    gameObject.playMusic("audio/beep.mp3", false, gameObject.effects);
   }
 });
 document.addEventListener("keyup", (e) => {
@@ -84,6 +86,10 @@ document.addEventListener("keyup", (e) => {
     if (gameObject.gameOn === true) gameObject.moveUp = false;
   } else if (e.code === "ArrowDown" || e.code === "KeyS") {
     if (gameObject.gameOn === true) gameObject.moveDown = false;
+  } else if (e.code === "ArrowLeft" || e.code === "KeyA") {
+    if (gameObject.gameOn === true) gameObject.moveLeft = false;
+  } else if (e.code === "ArrowRight" || e.code === "KeyD") {
+    if (gameObject.gameOn === true) gameObject.moveRight = false;
   }
 });
 musicNode.addEventListener("click", () => {
