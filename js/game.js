@@ -50,17 +50,25 @@ class Game {
         requestAnimationFrame((t2) => resolve(1000 / (t2 - t1)))
       )
     );
-  spawnEnemies = () => {
-    if (this.timer % 1440 === 0) {
+  spawnEnemies = (fps) => {
+    let speed;
+    if (fps > 200) {
+      speed = 1440;
+    } else if (fps < 200 && fps > 110) {
+      speed = 1440 / 2;
+    } else {
+      speed = 1440 / 4;
+    }
+    if (this.timer % speed === 0) {
       for (let i = 0; i < this.enemyCount; i++) {
         let enemy = new Enemies();
         this.enemiesArr.push(enemy);
       }
     }
   };
-  enemiesMovement = () => {
+  enemiesMovement = (fps) => {
     this.enemiesArr.forEach((enemy, index) => {
-      enemy.automaticMovement();
+      enemy.automaticMovement(fps);
       if (enemy.x > this.village.x) {
         if (this.explosives > 0 && this.useExplosives === true) {
           let mine = new Mine(enemy.y + enemy.height);
@@ -286,8 +294,8 @@ class Game {
     this.actionMovement4D();
     this.checkSoundButtons();
     this.setHighScoreScreen();
-    this.spawnEnemies();
-    this.enemiesMovement();
+    this.getFPS().then((fps) => this.spawnEnemies(fps));
+    this.getFPS().then((fps) => this.enemiesMovement(fps));
     this.cannonBallMovementCollisions();
     this.timer++;
     this.gameStatus(this.gameOn);

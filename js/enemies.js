@@ -26,8 +26,20 @@ class Enemies {
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
   }
-  automaticMovement = () => {
-    this.x += this.speed;
+  getSpeed(fps) {
+    let speed;
+    if (fps > 200) {
+      speed = fps;
+    } else if (fps < 200 && fps > 110) {
+      speed = fps * 2;
+    } else {
+      speed = fps * 4;
+    }
+    return speed;
+  }
+  automaticMovement = (fps) => {
+    let speed = this.getSpeed(fps);
+    this.x += (this.speed * speed) / fps;
     this.node.style.left = `${this.x}px`;
   };
   enemyStop = (x) => {
