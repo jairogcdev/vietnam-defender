@@ -24,7 +24,7 @@ Vietnam defender is a classic game of kill enemies in waves, by killing enemies 
 - Enemy Fire
 - 2 Players
 - Bonus weapons to get in game
-- 4D Shotting
+- 4D Shooting
 
 # Technologies used
 
