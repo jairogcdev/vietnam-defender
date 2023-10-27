@@ -134,7 +134,7 @@ class Game {
   };
   collisionCheckCannonBallEnemies = () => {
     this.enemiesArr.forEach((eachEnemy, indexEnemy) => {
-      this.cannonBallArr.forEach((eachCannonBall, indexBall) => {
+      this.cannonBallArr.forEach((eachCannonBall) => {
         if (
           eachEnemy.x < eachCannonBall.cannonBallX + eachCannonBall.width &&
           eachEnemy.x + eachEnemy.width > eachCannonBall.cannonBallX &&

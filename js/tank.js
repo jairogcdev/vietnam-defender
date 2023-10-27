@@ -10,8 +10,6 @@ class Tank {
     this.x = 900;
     this.y = 332;
     this.tankSpeed = 1;
-    this.isMovingUp = false;
-    this.isMovingDown = false;
 
     // DOM adjustments
     this.node.style.width = `${this.width}px`;
